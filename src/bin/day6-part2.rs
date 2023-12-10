@@ -23,10 +23,8 @@ fn main() {
 
             let func = get_func(action);
 
-            for x in x_start..=x_stop {
-                for y in y_start..=y_stop {
-                    lights[x * 1000 + y] = func(lights[x * 1000 + y]);
-                }
+            for (x, y) in (x_start..=x_stop).cartesian_product(y_start..=y_stop) {
+                lights[x * 1000 + y] = func(lights[x * 1000 + y]);
             }
         });
 
