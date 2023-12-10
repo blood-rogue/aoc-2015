@@ -22,7 +22,7 @@ fn main() {
             let (id, details) = line.split_once(": ").unwrap();
 
             (
-                id.split_once(' ').unwrap().1.parse::<usize>().unwrap(),
+                id[4..].parse::<usize>().unwrap(),
                 details
                     .split(", ")
                     .map(|detail| detail.split_once(": ").unwrap())
