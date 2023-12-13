@@ -138,7 +138,7 @@ impl Game {
 
     fn boss_attack(&mut self) {
         let armor = if self.shield_timer > 0 { 7 } else { 0 };
-        let damage = 1.max(self.boss_damage.wrapping_add_signed(-armor));
+        let damage = 1.max(self.boss_damage.checked_add_signed(-armor).unwrap());
 
         self.player_hp = self.player_hp.wrapping_sub_unsigned(damage);
     }

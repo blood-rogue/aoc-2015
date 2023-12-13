@@ -89,7 +89,7 @@ fn main() {
             }
 
             Instruction::Jmp(offset) => {
-                pointer = pointer.wrapping_add_signed(*offset);
+                pointer = pointer.checked_add_signed(*offset).unwrap();
             }
 
             Instruction::Jie(r, offset) => match r {
